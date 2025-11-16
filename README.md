@@ -1,13 +1,13 @@
 
 # 🌊 RAKNUMMALLSHOP Flutter Project
 
-## 🧾 คำแนะนำการใช้งานสำหรับอาจารย์/ผู้ทดสอบ
+## 🧾 Instructions for Professor/Tester
 
-โครงงานนี้เป็นระบบร้านค้า Flutter ที่เชื่อมต่อกับฐานข้อมูล MySQL ผ่าน Node.js Backend
+This project is a Flutter-based e-commerce system that connects to a MySQL database via a Node.js backend.
 
 ---
 
-## 📦 โครงสร้างโปรเจกต์
+## 📦 Project Structure
 
 ```
 📁 lib/                  ← โค้ด Flutter
@@ -31,40 +31,39 @@
 
 ---
 
-## 🛠️ ขั้นตอนการใช้งานหลังจาก Clone
+## 🛠️ Setup Steps After Cloning
 
-### 1. ติดตั้ง Flutter Dependencies
-
+### 1. Install Flutter Dependencies
 ```
 flutter pub get
 ```
 
-### 2. ติดตั้ง Node.js และ Backend Dependencies
+### 2. Install Node.js and Backend Dependencies
 
 ```bash
 cd node-backend
 npm install
 ```
 
-### 3. เปิด Developer Mode (หากใช้ Windows)
+### 3. Enable Developer Mode (if on Windows)
 
-- คำสั่งใน VS Code Terminal:
+- Command in VS Code Terminal:
 
 ```bash
 start ms-settings:developers
 ```
 
-> ✅ ใช้เฉพาะกรณีรันบน Emulator บน Windows ไม่จำเป็นสำหรับรันบน Android Device จริง
+> ✅ Only required when running on an Emulator on Windows. Not necessary for a real Android device.
 
-### 4. สร้างฐานข้อมูล MySQL
+### 4. Create the MySQL Database
 
-1. เปิด MySQL Workbench หรือ CLI แล้วรันคำสั่ง SQL ด้านล่าง 👇
+1. Open MySQL Workbench or CLI and run the SQL commands below 👇
 
 ```sql
 CREATE DATABASE RAKNUMMALLSHOP;
 USE RAKNUMMALLSHOP;
 
--- ตาราง products
+-- table products
 CREATE TABLE products (
   productid VARCHAR(36) PRIMARY KEY,
   price DOUBLE NOT NULL,
@@ -73,7 +72,7 @@ CREATE TABLE products (
   imageURL TEXT
 );
 
--- ตาราง customer
+-- table customer
 CREATE TABLE customer (
   customerid VARCHAR(36) PRIMARY KEY,
   fullname VARCHAR(100) NOT NULL,
@@ -85,7 +84,7 @@ CREATE TABLE customer (
   address TEXT
 );
 
--- ตาราง reviews
+-- table reviews
 CREATE TABLE reviews (
   review_id INT AUTO_INCREMENT PRIMARY KEY,
   product_id VARCHAR(36),
@@ -95,7 +94,7 @@ CREATE TABLE reviews (
   date DATE
 );
 
--- ตาราง purchase_history
+-- table purchase_history
 CREATE TABLE purchase_history (
   id INT AUTO_INCREMENT PRIMARY KEY,
   customerid VARCHAR(255),
@@ -105,21 +104,21 @@ CREATE TABLE purchase_history (
 );
 ```
 
-### 5. เพิ่มข้อมูลสินค้าและตัวอย่างทั้งหมด
+### 5. Add All Product Data and Samples
 
-นำเข้าไฟล์ `.sql` หรือใช้ SQL ข้างในโฟลเดอร์ `Database/` ที่มีข้อมูลเต็มรูปแบบ (สินค้าทุกประเภท + รีวิวจริง):
+Import the .sql files or use the SQL from the Database/ folder, which contains the full dataset (all product types + real reviews):
 
 ```sql
--- รันไฟล์เหล่านี้ใน MySQL Workbench หรือ CLI:
+-- Run these files in MySQL Workbench or CLI:
 source raknummallshop_products.sql;
 source raknummallshop_customer.sql;
 source raknummallshop_purchase_history.sql;
 source raknummallshop_reviews.sql;
 ```
 
-> ✅ หรือ copy คำสั่ง SQL ในแต่ละไฟล์แล้ววางใน MySQL Workbench ก็ได้
+> ✅ Alternatively, you can copy the SQL commands from each file and paste them into MySQL Workbench.
 
-### 6. สร้าง MySQL User `flutter` (เพื่อให้ backend ใช้งานได้)
+### 6. Create the 'flutter' MySQL User (for the backend)
 
 ```sql
 DROP USER IF EXISTS 'flutter'@'localhost';
@@ -130,22 +129,23 @@ FLUSH PRIVILEGES;
 
 ---
 
-## ▶️ วิธีรันแอป 
-สำคัญ! จะมี Run 2 แบบก้คือเชื่อมต่อ Emulator ผ่าน VsCode โดยตรงและ Run โดยใช้มือถือซึ่งจะใช่ URL ต่างกัน
-ในหน้า login.dart, sign_in.dart, api_service.dart, purchase_service.dart, review_service.dart จะมีการใช้ API 2 ตัวโดย
-### -ถ้าทำงานผ่าน Emulator ให้ใช้ http://10.0.2.2:3000/
-### -ถ้าทำงานผ่านโทรศัพท์ ให้ใช้ http://'ip ของเรื่องคุณ'/
-***โดย Default ที่ตั้งค่าไว้จะเป็นการทำงานผ่าน emulator
+## ▶️ How to Run the App
+Important! There are two ways to run the app: connecting via an Emulator in VS Code, or running on a real mobile device. These methods use different URLs.
+In login.dart, sign_in.dart, api_service.dart, purchase_service.dart, and review_service.dart, two different base URLs are used:
 
-### 📱 ฝั่ง Frontend (Flutter)
+### -When running on an Emulator, use: http://10.0.2.2:3000/
+### When running on a real phone, use: http://'your_computer_ip_address'/
+***The default setting in the code is for the emulator.
+
+### 📱 Frontend (Flutter)
 
 ```bash
 flutter run -d emulator-5554
 ```
 
-> หรือรันผ่าน Android Emulator ที่เปิดไว้จาก Android Studio
+> Or run from the Android Emulator opened in Android Studio.
 
-### 🔙 ฝั่ง Backend (Node.js)
+### 🔙 Backend (Node.js)
 
 ```bash
 cd node-backend
@@ -154,18 +154,14 @@ node server.js
 
 ---
 
-## 🔗 หมายเหตุ
+## 🔗 Notes
 
-- **Firebase**: ในโปรเจกต์มีการ setup Firebase เพียงเพื่อแสดงให้เห็นว่าสามารถเชื่อมต่อได้ในอนาคต
-  - ไม่ได้มีการใช้งาน Firebase ในโค้ดปัจจุบัน
-  - หากต้องการใช้งาน Firebase จริง:
-    1. ลงทะเบียน Firebase Project บน [Firebase Console](https://console.firebase.google.com)
-    2. เพิ่ม `google-services.json` ไปยัง `android/app/`
-    3. ตั้งค่า `firebase_options.dart` ด้วยคำสั่ง `flutterfire configure`
-    4. เพิ่ม `await Firebase.initializeApp()` ที่ `main.dart`
+- **Firebase**: The project has a basic Firebase setup only to demonstrate future connectivity.
+  - Firebase is not actively used in the current code.
+  - If you want to enable Firebase:
+    1. Register a Firebase Project on the [Firebase Console](https://console.firebase.google.com)
+    2. Add the`google-services.json` to `android/app/`
+    3. Configure `firebase_options.dart` with `flutterfire configure`
+    4. Add `await Firebase.initializeApp()` at `main.dart`
 
 ---
-ลงทะเบียน Firebase Project บน Firebase Console
-เพิ่ม google-services.json ไปยัง android/app/
-ตั้งค่า firebase_options.dart ด้วยคำสั่ง flutterfire configure
-เพิ่ม await Firebase.initializeApp() ที่ main.dart
