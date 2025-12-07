@@ -1,5 +1,10 @@
 
 #  RAKNUMMALLSHOP Flutter Project
+![Flutter](https://img.shields.io/badge/Frontend-Flutter-%2302569B?logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Language-Dart-%230175C2?logo=dart&logoColor=white)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Framework-Express.js-000000?logo=express&logoColor=white)
+![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?logo=mysql&logoColor=white)
 
 ##  Instructions for Professor/Tester
 
