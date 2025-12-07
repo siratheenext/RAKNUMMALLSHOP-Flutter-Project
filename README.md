@@ -1,13 +1,13 @@
 
-# 🌊 RAKNUMMALLSHOP Flutter Project
+#  RAKNUMMALLSHOP Flutter Project
 
-## 🧾 Instructions for Professor/Tester
+##  Instructions for Professor/Tester
 
 This project is a Flutter-based e-commerce system that connects to a MySQL database via a Node.js backend.
 
 ---
 
-## 📦 Project Structure
+##  Project Structure
 
 ```
 📁 lib/                  ← โค้ด Flutter
@@ -31,7 +31,7 @@ This project is a Flutter-based e-commerce system that connects to a MySQL datab
 
 ---
 
-## 🛠️ Setup Steps After Cloning
+##  Setup Steps After Cloning
 
 ### 1. Install Flutter Dependencies
 ```
@@ -129,7 +129,7 @@ FLUSH PRIVILEGES;
 
 ---
 
-## ▶️ How to Run the App
+##  How to Run the App
 Important! There are two ways to run the app: connecting via an Emulator in VS Code, or running on a real mobile device. These methods use different URLs.
 In login.dart, sign_in.dart, api_service.dart, purchase_service.dart, and review_service.dart, two different base URLs are used:
 
@@ -137,7 +137,7 @@ In login.dart, sign_in.dart, api_service.dart, purchase_service.dart, and review
 ### When running on a real phone, use: http://'your_computer_ip_address'/
 ***The default setting in the code is for the emulator.
 
-### 📱 Frontend (Flutter)
+###  Frontend (Flutter)
 
 ```bash
 flutter run -d emulator-5554
@@ -145,7 +145,7 @@ flutter run -d emulator-5554
 
 > Or run from the Android Emulator opened in Android Studio.
 
-### 🔙 Backend (Node.js)
+###  Backend (Node.js)
 
 ```bash
 cd node-backend
@@ -154,7 +154,7 @@ node server.js
 
 ---
 
-## 🔗 Notes
+##  Notes
 
 - **Firebase**: The project has a basic Firebase setup only to demonstrate future connectivity.
   - Firebase is not actively used in the current code.
